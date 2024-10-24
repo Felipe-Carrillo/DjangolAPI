@@ -21,7 +21,7 @@ from api.home.home_view import home_views
 urlpatterns = [
     
     #path('admin/', admin.site.urls),
-    path('login/',login_view,name = "login_vista"),
+    path('login/',login_view,name = "login"),
     path('',home_views, name = "home"),
 ]
 
