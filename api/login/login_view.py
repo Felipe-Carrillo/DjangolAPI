@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.models import User
 
 @csrf_protect
 def login_view(request):
@@ -11,62 +11,52 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        
+        # Intentar autenticar al usuario
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
+            # Si las credenciales son válidas, iniciar sesión
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, 'Usuario o contraseña inválidos')
-    
+            # Si las credenciales son inválidas, mostrar mensaje de error
+            messages.error(request, 'Credenciales inválidas')  # Mensaje de error
+
+    # Si no es POST o hay un error, mostrar el formulario de login
     return render(request, 'login.html')
+
 
 @csrf_protect
 def registrar_views(request):
-    """Vista para el registro de usuarios"""
-    template_name = "register.html"
-    
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         password_confirmation = request.POST.get('password_confirmation')
 
-        # Verificar si las contraseñas coinciden
-        if password != password_confirmation:
-            messages.error(request, "Las contraseñas no coinciden")
-            return render(request, template_name)
-
-        # Verificar si el nombre de usuario ya existe
+        # Verifica si el nombre de usuario ya existe
         if User.objects.filter(username=username).exists():
-            messages.error(request, "El usuario ya existe")
-            return render(request, template_name)
+            messages.error(request, "El nombre de usuario ya está en uso.")
+            return redirect('registrar')
 
-        # Verificar si el correo ya existe
+        # Verifica si el correo electrónico ya existe
         if User.objects.filter(email=email).exists():
-            messages.error(request, "El correo ya existe")
-            return render(request, template_name)
+            messages.error(request, "El correo electrónico ya está en uso.")
+            return redirect('registrar')
 
-        try:
-            # Crear nuevo usuario
-            user = User(
-                username=username,
-                email=email,
-            )
-            user.set_password(password)  # Configura la contraseña de forma segura
-            user.is_active = True  # Cambiado a True para permitir el inicio de sesión
-            user.save()
+        # Verifica que las contraseñas coincidan
+        if password != password_confirmation:
+            messages.error(request, "Las contraseñas no coinciden.")
+            return redirect('registrar')
 
-            # Mensaje de éxito y redirección al login
-            messages.success(request, "Cuenta creada exitosamente. Puedes iniciar sesión ahora.")
-            return redirect('login')
-        except Exception as e:
-            messages.error(request, f"Error al crear la cuenta: {str(e)}")
-            return render(request, template_name)
+        # Crear un nuevo usuario
+        nuevo_usuario = User.objects.create_user(username=username, email=email, password=password)
+        nuevo_usuario.save()
+        messages.success(request, "Usuario registrado exitosamente.")
+        return redirect('login')  # Redirige a la página de inicio de sesión
 
-    # Retornar la plantilla en caso de GET
-    return render(request, template_name)
-
+    return render(request, 'register.html')
 @csrf_protect
 def recuperar_views(request):
     """Vista para recuperar contraseña"""

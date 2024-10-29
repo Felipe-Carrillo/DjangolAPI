@@ -133,7 +133,7 @@
     </section>
     <!-- End Banner Area -->
 
-    <!--================Login Box Area =================-->
+<!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
     <div class="container">
         <div class="row">
@@ -151,6 +151,7 @@
                 <div class="login_form_inner">
                     <h3>Log in to enter</h3>
                     <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}  <!-- Agregar el token CSRF aquí -->
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="username" name="username" placeholder="Username" 
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required 
@@ -158,7 +159,7 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required 
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" 
                                 pattern=".{6,}" title="La contraseña debe tener al menos 6 caracteres">
                         </div>
                         <div class="col-md-12 form-group">
@@ -166,25 +167,50 @@
                                 <input type="checkbox" id="f-option2" name="selector">
                                 <label for="f-option2">Keep me logged in</label>
                             </div>
-                            <div class="col-md-12 form-group">
-                                <button type="submit" value="submit" class="primary-btn" style="margin-bottom: 20px;">Log In</button>
-                            </div>
-                            
-                            <div class="col-md-12 form-group">
-                                <button type="button" class="primary-btn" style="background-color: red; margin-bottom: 20px;">Google Sign In</button>
-                            </div>
-                            
-                            <div class="col-md-12 form-group">
-                                <a href="{% url 'recuperar' %}" style="display: block; margin-top: 10px;">Forgot Password?</a>
-                            </div>
-                            
-                    </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn" style="margin-bottom: 20px;">Log In</button>
+                        </div>
+                        
+                        <div class="col-md-12 form-group">
+                            <button type="button" class="primary-btn" style="background-color: red; margin-bottom: 20px;">Google Sign In</button>
+                        </div>
+                        
+                        <div class="col-md-12 form-group">
+                            <a href="{% url 'recuperar' %}" style="display: block; margin-top: 10px;">Forgot Password?</a>
+                        </div>
+                    </form> <!-- Cerrar la etiqueta del formulario aquí -->
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--================End Login Box Area =================-->
+
+<!-- start footer Area -->
+<footer class="footer-area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+                        magna aliqua.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Newsletter</h6>
+                    <p>Stay updated with our latest trends</p>
+                    <div id="mc_embed_signup">
+                        <form target="_blank"  method="get" class="form-inline">
+                            <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Enter Email '" required type="email">
+                            <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>
+                            <div class="info"></div>
+                        </form>
 
 <!-- start footer Area -->
 <footer class="footer-area section_gap">
@@ -253,15 +279,3 @@
             event.preventDefault();
         }
     });
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        <div>
-            <label for="username">Usuario:</label>
-            <input type="text" name="username" required>
-        </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" required>
-        </div>
-        <button type="submit">Iniciar sesión</button>
-</form>
