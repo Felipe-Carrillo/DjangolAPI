@@ -11,10 +11,11 @@
     <h1>Bienvenido a tu página de inicio</h1>
 
     <!-- Botón de cerrar sesión -->
-    <form action="{% url 'home' %}" method="post">
+    <form action="{% url 'salir' %}" method="post"> <!-- Cambiar 'home' a 'salir' -->
         {% csrf_token %}
         <button type="submit">Cerrar sesión</button>
     </form>
 </body>
 </html>
+
 

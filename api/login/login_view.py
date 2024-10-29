@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 
 @csrf_protect
 def login_view(request):
@@ -71,8 +72,8 @@ def recuperar_views(request):
 
 def salir_view(request):
     """Vista para cerrar sesión"""
-    logout(request)
-    messages.success(request, "Has cerrado sesión exitosamente")
+    logout(request)  # Llama a la función logout para cerrar la sesión del usuario
+    messages.success(request, "Has cerrado sesión exitosamente")  # Mensaje de éxito
     return redirect('login')
 
 @login_required
