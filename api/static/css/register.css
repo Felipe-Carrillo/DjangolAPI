@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #f0b429;  /* Color amarillo para el borde */
+    box-shadow: 0 0 5px rgba(240, 180, 41, 0.5); /* Sombras amarillas */
+    outline: none;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f0b429;  /* Color amarillo principal */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: #e8a620;
+    box-shadow: 0 4px 15px rgba(240, 180, 41, 0.4); /* Sombra al pasar el cursor */
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+p a {
+    color: #f0b429; /* Enlace en amarillo */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Diseño adicional para la estructura del formulario */
+.form-box {
+    border-left: 5px solid #f0b429; /* Borde amarillo en el lado izquierdo del formulario */
+    transition: all 0.3s;
+}
+
+.form-box:hover {
+    border-left-color: #e8a620; /* Cambio de color al pasar sobre el formulario */
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2); /* Sombra más grande al pasar el cursor */
+}

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olvidé mi Contraseña</title>
+    <link rel="stylesheet" href="{% static 'css/forgot.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box reset-password-container">
+            <h3 class="text-center">FORGOT PASSWORD</h3>
+            <p class="text-center">Input your email and we will send you reset password link</p>
+            
+            <form method="POST" action="">
+                {% csrf_token %}  <!-- Asegúrate de que esta línea esté presente -->
+                <div class="input-group form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+                
+                <button type="submit" class="primary-btn btn-block">Send</button>
+            </form>
+
+            <div class="text-center" style="margin-top: 15px;">
+                <a href="{% url 'login_view' %}">Remember your account? Log in</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

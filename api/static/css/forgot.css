@@ -1,0 +1,142 @@
+/* Estilos globales */
+body {
+    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor principal del formulario */
+.reset-password-container {
+    margin-top: 100px;
+    padding: 40px;
+    background-color: #fff9db;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Animación cuando el contenedor está en foco */
+.reset-password-container:hover {
+    transform: scale(1.02);
+}
+
+/* Títulos */
+h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #d4a017;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Descripción */
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Etiquetas de los campos */
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Campos de entrada */
+.form-control {
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #d4a017;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Efecto hover y focus en los campos de entrada */
+.form-control:hover, .form-control:focus {
+    border-color: #ffcc00;
+    outline: none;
+}
+
+/* Botón principal */
+.primary-btn {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 20px; /* Agregado para separar el botón del campo anterior */
+}
+
+/* Hover del botón */
+.primary-btn:hover {
+    background-color: #ffcc00;
+    transform: translateY(-2px);
+}
+
+
+/* Hover del botón */
+.primary-btn:hover {
+    background-color: #ffcc00;
+    transform: translateY(-2px);
+}
+
+/* Enlace de vuelta a inicio de sesión */
+.text-center a {
+    color: #d4a017;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Hover en el enlace */
+.text-center a:hover {
+    color: #b58900;
+    text-decoration: underline;
+}
+
+/* Contenedor del texto central */
+.text-center {
+    margin-top: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .reset-password-container {
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .primary-btn {
+        font-size: 18px;
+    }
+}
