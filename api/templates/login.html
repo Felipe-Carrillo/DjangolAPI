@@ -150,6 +150,13 @@
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>Log in to enter</h3>
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{ message }}<br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
                     <form class="row login_form" method="post" id="contactForm" novalidate="novalidate">
                         {% csrf_token %}  <!-- Agregar el token CSRF aquí -->
                         <div class="col-md-12 form-group">
